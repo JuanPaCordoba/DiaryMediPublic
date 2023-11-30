@@ -1,0 +1,486 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 25/10/2023, 4:57:43 p. m.
+    Author     : USER
+*/
+/*===========GLOBAL=============*/
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+:root{
+    --blue: #91bade;
+    --blue2: #0c578c;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+body{
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contenedor{
+    position: relative;
+    width: 100%;
+}
+/*=========NAVEGACION=============*/
+.navegacion{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--blue);
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+}
+.navegacion.active{
+    width: 80px;
+}
+.navegacion ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.navegacion ul li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.navegacion ul li:hover,
+.navegacion ul li.hovered {
+  background-color: var(--white);
+}
+.navegacion ul li:nth-child(1){
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+.navegacion ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+.navegacion ul li:hover a,
+.navegacion ul li.hovered a {
+  color: var(--blue);
+}
+.navegacion ul li a .icon{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    line-height: 66px;
+    text-align: center;
+}
+.navegacion ul li a .icon img{
+    width: 60px;
+    height: 40px;
+    line-height: 66px;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+.navegacion ul li a .icon ion-icon{
+    font-size: 1.75rem;
+}
+.navegacion ul li a .title{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+.navegacion ul li:hover a::before,
+.navegacion ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+.navegacion ul li:hover a::after,
+.navegacion ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+/*==============MAIN=====================*/
+.main{
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+}
+.main.active{
+    width: calc(100% - 80px);
+    left: 80px;
+}
+.topbar{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.toggle{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+.search{
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+.search label{
+    position: relative;
+    width: 100%;
+}
+.search label input{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--black2);
+}
+.search label ion-icon{
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.2rem;
+}
+.user{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.user img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/*===========CARDS============*/
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+  
+  .cardBox .card {
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox .card .cardName{
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5rem;
+    color: var(--blue);
+}
+
+.cardBox .card .titleCard{
+    color: var(--black2);
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+.cardBox .card .iconBx{
+    font-size: 2.0rem;
+    color: var(--black2);
+}
+/*===========DETAILS LIST============*/
+.details{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 50px;
+}
+.details .recentUsers{
+    position: relative;
+    display: grid;
+    min-height: 300px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+.details .cardHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.cardHeader h2{
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.details table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.details table thead td{
+    font-weight: 600;
+}
+
+.details .recentUsers table tr {
+    color: var(--black1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+.details .recentUsers table tr:last-child{
+    border-bottom: none;
+}
+.details .recentUsers table tbody tr:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+.details .recentUsers table tr td{
+    padding: 10px;
+}
+.details .recentUsers table tr td:last-child{
+    text-align: end;
+}
+.details .recentUsers table tr td:nth-child(2){
+    text-align: end;
+}
+.details .recentUsers table tr td:nth-child(3){
+    text-align: center;
+}
+.statusActive{
+    padding: 2px 4px;
+    background: #8de02c;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.statusDisble{
+    padding: 2px 4px;
+    background: #f00;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/*CRUD REGISTRAR*/
+.contenedorFormularioRegistrar{
+    padding: 3%;
+}
+.registroUsuarios{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.registroUsuarios span{
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+.registroUsuarios .inputBox{
+    position: relative;
+}
+.registroUsuarios .inputBox input{
+    width: 100%;
+    background: var(--white);
+    border: 3px solid var(--black2);
+    border-radius: 10px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+}
+.registroUsuarios .inputBox input:focus{
+    border: 3px solid var(--blue);
+    outline: none;
+}
+.registroUsuarios .listaGeneros{
+    width: 100%;
+    background: var(--white);
+    border: 3px solid var(--black2);
+    border-radius: 10px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+}
+.registroUsuarios .inputGenero .opcionGenero {
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+.registroUsuarios .listaUsuarios{
+    width: 100%;
+    background: var(--white);
+    border: 3px solid var(--black2);
+    border-radius: 10px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+}
+.registroUsuarios .opcionesTipoSangre{
+    width: 100%;
+    background: var(--white);
+    border: 3px solid var(--black2);
+    border-radius: 10px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+}
+.registroUsuarios .inputTipoUsuario .tiposUsuarios {
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+.registroUsuarios .opcionesExtrasUsuarioPaciente2 .tipoSanguineo{
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+.registroUsuarios .inputBox .formulario_Error{
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+.registroUsuarios .inputBox .formulario_Error-activo{
+    display: block;
+}
+.registroUsuarios .inputBox .formularioEstado{
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    z-index: 100;
+    font-size: 16px;
+    opacity: 0;
+}
+.registroUsuarios .formulario_CamposError,
+.registroUsuarios .botonRegistrar{
+    grid-column: span 2;
+}
+.registroUsuarios .formulario_CamposError{
+    height: 45px;
+    line-height: 45px;
+    background: #f66060;
+    border-radius: 10px;
+    display: none;
+}
+.registroUsuarios .formulario_CamposError-activo{
+    display: block;
+}
+.registroUsuarios .botonRegistrar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.registroUsuarios .botonRegistrar input{
+    height: 45px;
+    line-height: 45px;
+    width: 30%;
+    background: var(--blue);
+    color: var(--white);
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.registroUsuarios .botonRegistrar input:hover{
+    background: var(--blue2);
+    color: var(--white);
+}
+.registroUsuarios .formularioExitoso{
+    font-size: 14px;
+    color: #119200;
+    display: none;
+}
+.registroUsuarios .formularioExitoso-activo{
+    display: block;
+}
+.registroUsuarios .inputBox-correcto .formularioEstado{
+    color: #1ed12d;
+    opacity: 1;
+}
+.registroUsuarios .inputBox-incorrecto span{
+    color: #bb2929;
+}
+.registroUsuarios .inputBox-incorrecto .formularioEstado{
+    color: #bb2929;
+    opacity: 1;
+}
+.registroUsuarios .inputBox-incorrecto input{
+    border: 3px solid #bb2929;
+}
+.contenedorFormularioRegistrar .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+@media screen and (max-width: 800px){
+    .registroUsuarios{
+        grid-template-columns: 1fr;
+    }
+    .registroUsuarios .formulario_CamposError,
+    .registroUsuarios .botonRegistrar{
+        grid-column: span 1;
+    }
+    .registroUsuarios .botonRegistrar{
+        width: 100%;
+    }
+}
+
