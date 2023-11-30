@@ -1,0 +1,346 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 30/11/2023, 10:00:55 a. m.
+    Author     : USER
+*/
+/***************GLOBAL***************/
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --blue1: #91bade;
+    --blue2: #0c578c;
+    --white: #fff;
+    --gray: #d8d8d8;
+    --black1: #222;
+    --black2: #999;
+}
+body{
+    min-height: 100hv;
+    overflow-x: hidden;
+}
+.contenedorGeneral1{
+    position: relative;
+    width: 100%;
+}
+/***************NAVEGACION***************/
+.contenedorNavegacion{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--blue1);
+    border-left: 15px solid var(--blue1);
+    transition: 0.5s;
+    overflow: hidden;
+}
+.contenedorNavegacion.active{
+    width: 80px;
+}
+.contenedorNavegacion ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.contenedorNavegacion ul li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+}
+.contenedorNavegacion ul li:hover,
+.contenedorNavegacion ul li.hovered{
+    background-color: var(--white);
+}
+.contenedorNavegacion ul li:nth-child(1){
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+.contenedorNavegacion ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+.contenedorNavegacion ul li:hover a,
+.contenedorNavegacion ul li.hovered a{
+    color: var(--blue1);
+}
+.contenedorNavegacion ul li a .icon{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 73px;
+    text-align: center;
+}
+.contenedorNavegacion ul li a .icon ion-icon{
+    font-size: 1.75rem;
+}
+.contenedorNavegacion ul li a .tituloDiary{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 58px;
+    text-align: start;
+    white-space: nowrap;
+    font-size: 25px;
+}
+.contenedorNavegacion ul li a .titulo{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+.contenedorNavegacion ul li:hover a::before,
+.contenedorNavegacion ul li.hovered a::before{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+.contenedorNavegacion ul li:hover a::after,
+.contenedorNavegacion ul li.hovered a::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+/***************MAIN***************/
+.contenedorMain{
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+}
+.contenedorMain.active{
+    width: calc(100% - 80px);
+    left: 80px;
+}
+.contenedorTopbar{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.contenedorToggle{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+.user{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.user img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/***************LISTA DE ARCHIVOS***************/
+.archivos{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 70px;
+    margin-top: 10px;
+}
+.archivos .contenedorBtn{
+    position: relative;
+    display: grid;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.18);
+    border-radius: 20px;
+}
+.archivos .headerContenedor{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.headerContenedor .btn{
+    position: relative;
+    padding: 5px 5px;
+    background: var(--blue2);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+}
+/***************LISTA***************/
+.archivos table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.archivos table thead td{
+    font-weight: 600;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.09);
+}
+.archivos .contenedorBtn table tr{
+    color: var(--black1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.09);
+}
+.archivos .contenedorBtn table tr:last-child{
+    border-bottom: none;
+}
+.archivos .contenedorBtn table tr td{
+    padding: 10px 10px 10px 10px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.09);
+}
+.archivos .contenedorBtn table tr td:nth-child(1){
+    text-align: center;
+}
+.archivos .contenedorBtn table tr td:nth-child(4){
+    text-align: center;
+}
+.archivos .contenedorBtn table tr td:nth-child(5){
+    text-align: center;
+}
+.archivos .contenedorBtn table tbody tr td input{
+    display: inline-block;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      border-radius: 15px;
+      color: var(--white);
+      background-color: var(--blue2);
+}
+/*******************************************/
+/***************SUBIR ARCHIVO***************/
+/*******************************************/
+.contenedorSubirArchivo{
+    padding: 3%;
+}
+.subirArchivo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.subirArchivo span{
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+.subirArchivo .inputBox{
+    position: relative;
+}
+.subirArchivo .inputBox input{
+    width: 100%;
+    background: var(--white);
+    border: 2px solid var(--black2);
+    border-radius: 10px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+}
+.subirArchivo .inputBox input:focus{
+    border: 2px solid var(--blue1);
+    outline: none;
+}
+.subirArchivo .botonSubir{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    grid-column: span 2;
+    margin-left: auto;
+    margin-right: auto;
+}
+.subirArchivo .botonSubir input{
+    padding: 0 20px 0 20px;
+    line-height: 45px;
+    background: var(--blue1);
+    color: var(--white);
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+.subirArchivo .botonSubir input:hover{
+    background: var(--blue2);
+    color: var(--white);
+}
+.contenedorSubirArchivo .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+@media screen and (max-width: 800px){
+    .subirArchivo{
+        grid-template-columns: 1fr;
+    }
+    .subirArchivo .botonSubir{
+        grid-column: span 1;
+    }
+    .subirArchivo .botonSubir{
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    /* Ajustes de estilo para pantallas pequeñas */
+    .archivos .contenedorBtn table tr td:nth-child(2){
+        text-align: center;
+    }
+    .archivos .contenedorBtn table tr td:nth-child(3){
+        text-align: center;
+    }
+    table {
+      overflow-x: auto;
+    }
+    th, td {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    th {
+      text-align: center;
+    }
+}
